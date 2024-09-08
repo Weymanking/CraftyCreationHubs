@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CraftyCreationHubs - Your One-Stop Shop for Craft Gadgets</title>
+    <link rel="stylesheet" href="topy.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ... (previous styles remain unchanged) ... */
+
+        /* Enhanced Footer Styles */
+        footer {
+            background: linear-gradient(45deg, #1a1a1a, #2c2c2c);
+            color: #fff;
+            padding: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 80%);
+            animation: glow 10s linear infinite;
+        }
+
+        @keyframes glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section {
+            margin: 20px;
+        }
+
+        .footer-section h3 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #4CAF50;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5em;
+            margin-right: 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #4CAF50;
+            transform: scale(1.2);
+        }
+
+        #newsletter-form input[type="email"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+
+        #newsletter-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #newsletter-form button:hover {
+            background-color: #45a049;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+   .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .discount {
+            color: #f44336;
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80%;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+        @keyframes zoom {
+            from {transform:scale(0)} 
+            to {transform:scale(1)}
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+  .product-card {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .image-gallery {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .image-gallery img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-gallery img.active {
+            opacity: 1;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .gallery-nav button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+        }
+
+        .gallery-nav button.active {
+            background-color: #fff;
+        }
+
+        .place-order-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .place-order-btn:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- ... (previous content remains unchanged) ... -->
+  <header>
+        <nav>
+            <div class="logo">CraftyCreationHubs</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Welcome to CraftyCreationHubs</h1>
+            <p>Discover the latest and greatest in craft gadgets!</p>
+        </section>
+
+       <section id="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="image-gallery">
+                        <img src="https://tiny.one/yckttuxn" alt="Steelers Sign" class="active">
+                        <img src="https://tiny.one/4hn8pnb8" alt="Steelers Sign Close-up">
+                        <img src="https://tiny.one/mrxe3nx2" alt="Steelers Sign in Room">
+                        <div class="gallery-nav">
+                            <button class="active"></button>
+                            <button></button>
+                            <button></button>
+                        </div>
+                    </div>
+                    <h3>Steelers Illuminated Sign</h3>
+                    <p>Light up your game day with this stunning LED Steelers sign. Perfect for man caves and sports bars!</p>
+                    <span class="discount">$299.99</span>
+                    <span class="price">$249.99</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="place-order-btn" data-product="Steelers Illuminated Sign">Place Order</button>
+                </div>
+            <div class="product-card">
+            <div class="image-gallery">
+                <img src="https://tiny.one/msbvvssv" alt="Boston Celtics LED Light" class="main-image" onclick="openModal(this)">
+                <img src="https://tiny.one/exxc3zrd" alt="Boston Celtics LED Light Close-up" onclick="switchImage(this)">
+                <img src="https://tiny.one/mrx3ausr" alt="Boston Celtics LED Light in Room" onclick="switchImage(this)">
+      
+                        <div class="gallery-nav">
+                            <button class="active"></button>
+                            <button></button>
+                            <button></button>
+                        </div>
+                    </div>
+                    <h3>Boston Celtics LED Light</h3>
+            <p>Illuminate your space with Celtic pride! This sleek LED light brings the energy of the Garden to your home.</p>
+            <span class="discount">$459.99</span>
+            <span class="price">$400.0</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="place-order-btn" data-product="Steelers Illuminated Sign">Place Order</button>
+                </div>
+              
+              <div class="product-card">
+                    <div class="image-gallery">
+                <img src="https://tiny.one/yjprzamu" alt="Cleveland Indians Sign" class="active">
+                <img src="https://tiny.one/2p8yw8eb" alt="Cleveland Indians Sign Detail">
+                <img src="https://tiny.one/w4be3e2w" alt="Cleveland Indians Sign in Use">
+                        <div class="gallery-nav">
+                            <button class="active"></button>
+                            <button></button>
+                            <button></button>
+                        </div>
+                    </div>
+                   <h3>Cleveland Indians Vintage Sign</h3>
+            <p>Celebrate baseball history with this retro-style Cleveland Indians sign. A must-have for true fans!</p>
+            <span class="discount">$859.99</span>
+            <span class="price">$80.00</span>
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="place-order-btn" data-product="Steelers Illuminated Sign">Place Order</button>
+                </div>
+              
+            </div>
+        </section>
+
+     <section id="about">
+            <h2>About Us</h2>
+            <p>CraftyCreationHubs is your trusted source for the latest craft gadgets and accessories. We offer competitive prices and excellent customer service to support your creative endeavors.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contact-form">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+    <button type="submit">Send</button>
+</form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100089907660732&mibextid=LQQJ4d" class="fab fa-facebook"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-pinterest"></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <form id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 CraftyCreationHubs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ... (modal and other elements remain unchanged) ... -->
+     <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script src="topy.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+       document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var name = this.elements['name'].value;
+    var email = this.elements['email'].value;
+    var message = this.elements['message'].value;
+
+    Email.send({
+        SecureToken: "F90C434B841BF2175DD986947462F165A1BB", // Replace with your actual secure token from SmtpJS
+        To: 'waymanking119@gmail.com',
+        From: "your-email@example.com", // Replace with your email
+        Subject: "New Contact Form Submission",
+        Body: "Name: " + name + "<br>Email: " + email + "<br>Message: " + message
+    }).then(
+        message => alert("Thank you for your message. We will get back to you soon!")
+    );
+
+    this.reset();
+});
+        // Newsletter form submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var email = this.elements['email'].value;
+
+            Email.send({
+                SecureToken: "F90C434B841BF2175DD986947462F165A1BB", // Replace with your actual secure token from SmtpJS
+                To: 'waymanking119@gmail.com',
+                From: "ilomikparaphael@gmail.com",
+                Subject: "New Newsletter Subscription",
+                Body: "New subscriber email: " + email
+            }).then(
+                message => alert("Thank you for subscribing to our newsletter!")
+            );
+
+            this.reset();
+        });
+
+ function setupImageGalleries() {
+            document.querySelectorAll('.image-gallery').forEach(gallery => {
+                const images = gallery.querySelectorAll('img');
+                const navButtons = gallery.querySelectorAll('.gallery-nav button');
+                let currentIndex = 0;
+
+                function showImage(index) {
+                    images.forEach(img => img.classList.remove('active'));
+                    navButtons.forEach(btn => btn.classList.remove('active'));
+                    images[index].classList.add('active');
+                    navButtons[index].classList.add('active');
+                }
+
+                navButtons.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        currentIndex = index;
+                        showImage(currentIndex);
+                    });
+                });
+
+                setInterval(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    showImage(currentIndex);
+                }, 5000);
+            });
+        }
+
+        setupImageGalleries();
+
+        // Place Order functionality
+        document.querySelectorAll('.place-order-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const product = this.dataset.product;
+                const subject = `Order Inquiry: ${product}`;
+                const body = `Hi, I'm interested in ordering the ${product}. Please provide me with more information.`;
+                window.location.href = `mailto:waymanking119@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            });
+        });
+    </script>
+</body>
+</html>
